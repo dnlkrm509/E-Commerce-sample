@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
+
+const HomePage = React.lazy(() => import('./pages/HomePage'));
+const CartPage = React.lazy(() => import('./pages/Cart'));
+const WhishlistPage = React.lazy(() => import('./pages/Whishlist'));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense
+      fallback={<div className='text-center font-bold'>Loading...</div>}
+    >
+      <Switch>
+        <Route path='/' exact>
+          <Redirect to='/home' />
+        </Route>
+        <Route path='/home' exact>
+          <HomePage />
+        </Route>
+        <Route path='/cart' exact>
+          <CartPage />
+        </Route>
+        <Route path='/whishlist' exact>
+          <WhishlistPage />
+        </Route>
+        <Route path='*'>
+          <Redirect to='/' />
+        </Route>
+      </Switch>
+    </Suspense>
   );
 }
 
