@@ -4,7 +4,8 @@ import ProductsCategoriesItem from "./ProductCategoriesItem";
 
 const ProductsCategories = () => {
     return (
-        <div className="overflow-x-hidden">
+        <div className="overflow-x-hidden mb-[40px]">
+            <h4 className="text-[#144040] text-[14px] font-bold leading-[19px] not-italic w-[141px] h-[19px] mb-[24px] mt-[40px] font-[Manrope]">Products Categories</h4>
             <ul className="flex gap-[16px] overflow-x-auto">
             {productsCategories.map((productCategories) => (
                 <ProductsCategoriesItem 
