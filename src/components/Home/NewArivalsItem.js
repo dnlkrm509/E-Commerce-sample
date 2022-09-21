@@ -13,7 +13,7 @@ const NewArivalsItem = (props) => {
                             {props.title}
                         </div>
                         <div className="w-[105px] h-[18px] font-[DMSans] not-italic font-normal text-[12px] leading-[18px] text-[#696969] order-1 grow-0">
-                            Brand
+                            {props.brand ? props.brand : 'Brand'}
                         </div>
                     </div>
                     <div className="flex items-center p-0 gap-[4px] order-1 grow-0">

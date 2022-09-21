@@ -22,6 +22,7 @@ const NewArivalsList = () => {
                     image={popularProductsSlice.image}
                     rating={popularProductsSlice.rating}
                     price={popularProductsSlice.price}
+                    brand={popularProductsSlice.brand}
                 />
             ))}
             </ul>

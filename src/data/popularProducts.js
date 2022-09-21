@@ -23,31 +23,36 @@ const PopularProducts = [
         title: 'Daisy',
         image: fragrence1,
         rating: 4.5,
-        price: 999.999
+        price: 999.999,
+        brand: 'MARC JACOBS'
     },
     {
         title: 'SAUVAGE',
         image: fragrence2,
         rating: 4.5,
-        price: 999.999
+        price: 999.999,
+        brand: 'Dior'
     },
     {
         title: 'JASMINE',
         image: fragrence3,
         rating: 4.5,
-        price: 999.999
+        price: 999.999,
+        brand: 'ZARA'
     },
     {
         title: 'Full of light',
         image: fragrence4,
         rating: 4.5,
-        price: 999.999
+        price: 999.999,
+        brand: 'ZARA'
     },
     {
         title: 'Vert Malachite',
         image: fragrence5,
         rating: 4.5,
-        price: 999.999
+        price: 999.999,
+        brand: 'ARMANI'
     },
 ]
 
