@@ -5,6 +5,7 @@ import ProductsCategories from './ProductsCategories';
 import Ad1 from '../../assets/img/Ad/Ad1.png';
 import Ad2 from '../../assets/img/Ad/Ad2.png';
 import PopularProductsList from './PopularProducts';
+import NewArivalsList from './NewArivalsList';
 
 const Home = () => {
     return (
@@ -14,7 +15,7 @@ const Home = () => {
             <ProductsCategories />
             <PopularProductsList />
             <div className='mb-[40px]'><img src={Ad2} className='w-full' /></div>
-            <p>New Arivals</p>
+            <NewArivalsList />
             <BottomNav />
         </div>
     )
