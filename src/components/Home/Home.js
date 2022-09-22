@@ -10,13 +10,13 @@ import NewArivalsList from './NewArivalsList';
 const Home = () => {
     return (
         <div className='felx flex-col justify-between w-full px-[1.5rem]'>
-            <TopNav title='Home' />
+            <TopNav title='Home' notification={true} />
             <div><img src={Ad1} className='w-full' /></div>
             <ProductsCategories />
             <PopularProductsList />
             <div className='mb-[40px]'><img src={Ad2} className='w-full' /></div>
             <NewArivalsList />
-            <BottomNav />
+            <BottomNav iconName='home-primary' importType='homePrimary' />
         </div>
     )
 };

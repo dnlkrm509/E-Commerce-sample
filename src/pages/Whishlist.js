@@ -1,9 +1,10 @@
 import React from "react";
+import Wishlist from "../components/Wishlist/Wishlist";
 
 const WhishlistPage = () => {
     return (
         <div>
-            Whishlist
+            <Wishlist />
         </div>
     )
 };
