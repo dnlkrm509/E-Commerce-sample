@@ -1,16 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "../UI/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faCheck, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
+import { cartActions } from "../../store/cart-slice";
 
 const BuyProduct = (props) => {
     const dispatch = useDispatch();
+    const cartItems = useSelector(state => state.cart.items);
+    const cartItem = cartItems.find(item => item.id === props.selectedItem.id);
+    const [quantity, setQuantity] = useState(0);
+
+    const { quantity: itemsQuantity } = cartItems;
+    useEffect(() => {
+        setQuantity(cartItem ? cartItem.quantity : 1);
+    }, [itemsQuantity]);
     
     const hideModalHandler = () => {
         dispatch(uiActions.hideWishlistModal());
     };
+
+    const addToCartHandler = () => {
+        dispatch(cartActions.addToCart({
+            id: props.selectedItem.id,
+            title: props.selectedItem.title,
+            image: props.selectedItem.image,
+            brand: props.selectedItem.brand,
+            rating: props.selectedItem.rating,
+            price: props.selectedItem.price,
+            quantity: quantity
+        }))
+    };
+
+    const removeOneFromCartHandler = () => {
+        dispatch(cartActions.removeOneFromCart(props.selectedItem.id));
+    };
+    console.table(cartItem)
 
     return (
         <Modal onHideModal={props.onHideModal}>
@@ -68,19 +94,19 @@ const BuyProduct = (props) => {
                             Quantity
                         </span>
                         <div className="flex justify-between items-center p-0 gap-[12px] order-1 grow-0">
-                            <button className="flex items-start p-[4px] gap-[10px] bg-[#fff] rounded-[4px] border border-[#A7A7A7] order-0 grow-0">
+                            <button onClick={removeOneFromCartHandler} className="flex items-start p-[4px] gap-[10px] bg-[#fff] rounded-[4px] border border-[#A7A7A7] order-0 grow-0">
                                 <FontAwesomeIcon icon={faMinus} />
                             </button>
                             <span className="font-[DMSans] not-italic font-normal text-[16px] leading-[21px] text-[#414040] order-1 grow-0">
-                                0
+                                {cartItem ? cartItem.quantity : 0}
                             </span>
-                            <button className="flex items-start p-[4px] gap-[10px] bg-[#fff] rounded-[4px] border border-[#9D44B5] order-2 grow-0">
+                            <button onClick={addToCartHandler} className="flex items-start p-[4px] gap-[10px] bg-[#fff] rounded-[4px] border border-[#9D44B5] order-2 grow-0">
                                 <FontAwesomeIcon icon={faPlus} />
                             </button>
                         </div>
                     </div>
                     <div className="mt-[40px] flex items-center p-0 gap-[16px] self-stretch grow-0 order-4">
-                        <button className="bg-[#fff] w-[50%] border border-[#9D44B5] box-border font-bold font-[Manrope] text-[14px] text-center not-italic p-[11px_39px] text-[#9D44B5] rounded-[4px] grow-1 order-0">
+                        <button onClick={addToCartHandler} className="bg-[#fff] w-[50%] border border-[#9D44B5] box-border font-bold font-[Manrope] text-[14px] text-center not-italic p-[11px_39px] text-[#9D44B5] rounded-[4px] grow-1 order-0">
                             Add to Cart
                         </button>
                         <button className="bg-[#9D44B5] w-[50%] font-bold font-[Manrope] box-border text-[14px] text-center not-italic p-[11px_50px] text-[#fff] rounded-[4px] grow-1 order-1">
