@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    isVisible: false
+    isVisible: false,
+    addedToCartConfirmation: false
 }
 
 const uiSlice = createSlice({
@@ -12,7 +13,11 @@ const uiSlice = createSlice({
             state.isVisible = true
         },
         hideWishlistModal(state, action) {
-            state.isVisible = false
+            state.isVisible = false;
+            state.addedToCartConfirmation = false;
+        },
+        addedConfirmation(state, action) {
+            state.addedToCartConfirmation = true;
         }
     }
 })

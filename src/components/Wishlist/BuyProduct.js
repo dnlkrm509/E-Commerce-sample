@@ -5,9 +5,11 @@ import { faClose, faCheck, faMinus, faPlus } from "@fortawesome/free-solid-svg-i
 import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 import { cartActions } from "../../store/cart-slice";
+import { Link } from "react-router-dom";
 
 const BuyProduct = (props) => {
     const dispatch = useDispatch();
+    const isAddedToCartConfirmed = useSelector(state => state.ui.addedToCartConfirmation);
     const cartItems = useSelector(state => state.cart.items);
     const cartItem = cartItems.find(item => item.id === props.selectedItem.id);
     const [quantity, setQuantity] = useState(0);
@@ -36,11 +38,15 @@ const BuyProduct = (props) => {
     const removeOneFromCartHandler = () => {
         dispatch(cartActions.removeOneFromCart(props.selectedItem.id));
     };
-    console.table(cartItem)
+
+    const addedToCartConfirmationHandler = () => {
+        dispatch(uiActions.addedConfirmation());
+    };
 
     return (
         <Modal onHideModal={props.onHideModal}>
-            <section className="w-full flex flex-col items-center justify-center p-[40px_24px_24px] gap-[40px] absolute left-0 bottom-0 bg-[#fff] rounded-[12px_12px_0_0]">
+            {!isAddedToCartConfirmed && (
+                <section className="w-full flex flex-col items-center justify-center p-[40px_24px_24px] gap-[40px] absolute left-0 bottom-0 bg-[#fff] rounded-[12px_12px_0_0]">
                 <div className="flex justify-between items-center p-0 order-0 self-stretch grow-0 mb-[40px]">
                     <h2 className="font-[Manrope] not-italic font-bold text-[20px] leading-[27px] text-[#414040] order-0 grow-0">
                         Buy Product
@@ -64,7 +70,7 @@ const BuyProduct = (props) => {
                                 </div>
                             </div>
                             <div className="font-[DMSans] fixed right-[24px] ml-auto not-italic font-bold text-[12px] leading-[16px] text-[#9D44B5] order-1 grow-0">
-                                View All
+                                View Detail
                             </div>
                         </div>
                     </div>
@@ -106,15 +112,39 @@ const BuyProduct = (props) => {
                         </div>
                     </div>
                     <div className="mt-[40px] flex items-center p-0 gap-[16px] self-stretch grow-0 order-4">
-                        <button onClick={addToCartHandler} className="bg-[#fff] w-[50%] border border-[#9D44B5] box-border font-bold font-[Manrope] text-[14px] text-center not-italic p-[11px_39px] text-[#9D44B5] rounded-[4px] grow-1 order-0">
+                        <button 
+                            onClick={addedToCartConfirmationHandler} 
+                            className="bg-[#fff] w-[50%] border border-[#9D44B5] box-border font-bold font-[Manrope] text-[14px] text-center not-italic p-[11px_39px] text-[#9D44B5] rounded-[4px] grow-1 order-0"
+                        >
                             Add to Cart
                         </button>
-                        <button className="bg-[#9D44B5] w-[50%] font-bold font-[Manrope] box-border text-[14px] text-center not-italic p-[11px_50px] text-[#fff] rounded-[4px] grow-1 order-1">
+                        <button 
+                            className="bg-[#9D44B5] w-[50%] font-bold font-[Manrope] box-border text-[14px] text-center not-italic p-[11px_50px] text-[#fff] rounded-[4px] grow-1 order-1"
+                        >
                             Buy Now
                         </button>
                     </div>
                 </div>
             </section>
+            )}
+
+            {isAddedToCartConfirmed && (
+                <section className="w-full flex flex-col justify-center items-center p-[16px_24px_24px] gap-[40px] absolute left-0 bottom-0 bg-[#fff] rounded-[12px_12px_0_0]">
+                    <div className="w-[80px] h-[6px] bg-[#E4E4E4] rounded-[8px] order-0 grow-0"></div>
+                    <div className="flex flex-col items-start p-[16px_0] gap-[16px] order-1 self-stretch grow-0">
+                        <p className="font-[Manrope] not-italic font-bold text-[20px] leading-[27px] text-center text-[#414040] order-0 self-stretch grow-0">
+                            This item is added to Cart
+                        </p>
+                        <p className="font-[DMSans] not-italic font-normal text-[16px] leading-[21px] text-center text-[#414040] order-1 self-stretch grow-0">
+                            See your cart to proceed to checkout
+                            <p><Link to='/cart'>Tap here</Link></p>
+                        </p>
+                    </div>
+                    <button onClick={hideModalHandler} className="text-[#fff] h-[40px] mt-[40px] bg-[#9D44B5] rounded-[4px] order-2 grow-0 self-stretch">
+                        Ok
+                    </button>
+                </section>
+            )}
         </Modal>
     )
 };
