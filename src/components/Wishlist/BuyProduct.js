@@ -137,7 +137,7 @@ const BuyProduct = (props) => {
                         </p>
                         <p className="font-[DMSans] not-italic font-normal text-[16px] leading-[21px] text-center text-[#414040] order-1 self-stretch grow-0">
                             See your cart to proceed to checkout
-                            <p><Link to='/cart'>Tap here</Link></p>
+                            <p className="mt-[16px] font-normal underline text-[#9D44B5]"><Link to='/cart'>Tap here</Link></p>
                         </p>
                     </div>
                     <button onClick={hideModalHandler} className="text-[#fff] h-[40px] mt-[40px] bg-[#9D44B5] rounded-[4px] order-2 grow-0 self-stretch">

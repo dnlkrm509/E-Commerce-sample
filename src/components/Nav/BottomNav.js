@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { Link } from "react-router-dom";
 import homeSecondary from '../../assets/icons/home-secondary.svg';
 import heartSecondary from '../../assets/icons/heart-secondary.svg';
-import shoppingCart from '../../assets/icons/shopping-cart.svg';
+import shoppingCartSecondary from '../../assets/icons/shopping-cart-secondary.svg';
 import userSecondary from '../../assets/icons/user-secondary.svg';
 
 function loadIcons(iconName) {
@@ -44,8 +44,10 @@ const BottomNav = (props) => {
                         </li>
                         <li><Link to='/cart'>
                             <div className="flex flex-col items-center judtify-center py-[4px] px-[8px] gap-[8px]">
-                                <img src={shoppingCart} />
-                                <p className={`${importedIcon.importType === 'cartPrimary' ? 'text-[#9D4485]' : ''} font-bold text-[12px] font-[DMSans] not-italic text-center order-1`}>
+                            <img 
+                                src={importedIcon.importType === 'shoppingCartPrimary' ? 
+                                    importedIcon.icon : shoppingCartSecondary} />
+                                <p className={`${importedIcon.importType === 'shoppingCartPrimary' ? 'text-[#9D4485]' : ''} font-bold text-[12px] font-[DMSans] not-italic text-center order-1`}>
                                     Cart
                                 </p>
                             </div>
