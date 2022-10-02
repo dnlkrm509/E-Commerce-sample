@@ -51,6 +51,7 @@ const AddToCart = (props) => {
 
     const removeFromCartHandler = () => {
         dispatch(cartActions.removeFromCart(props.deleteItem));
+        dispatch(uiActions.showDeleteConfirmation());
         props.onHideModal();
     };
 

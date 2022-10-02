@@ -4,6 +4,7 @@ const initialState = {
     isVisible: false,
     addedToCartConfirmation: false,
     deleteWishlistModal: false,
+    deleteConfirmation: false
 }
 
 const uiSlice = createSlice({
@@ -25,6 +26,12 @@ const uiSlice = createSlice({
         showDeleteWishlistModal(state, action) {
             state.deleteWishlistModal = true;
             state.addedToCartConfirmation = false;
+        },
+        showDeleteConfirmation(state, action) {
+            state.deleteConfirmation = true;
+        },
+        hideDeleteConfirmation(state, action) {
+            state.deleteConfirmation = false;
         }
     }
 })
