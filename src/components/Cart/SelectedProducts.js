@@ -4,7 +4,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import PopularProducts from "../../data/popularProducts";
 import SelectedProductsItem from "./SelectedProductsItem";
 
-const SelectedProducts = () => {
+const SelectedProducts = (props) => {
     const popularProductsSlices = PopularProducts.slice(1, 3);
 
     return (
@@ -28,6 +28,7 @@ const SelectedProducts = () => {
                 rating={popularProductsSlice.rating}
                 price={popularProductsSlice.price}
                 brand={popularProductsSlice.brand}
+                onDeleteItem={props.onDeleteItem}
             />
         ))}
             </ul>

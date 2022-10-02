@@ -4,6 +4,9 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const CartPage = React.lazy(() => import('./pages/Cart'));
 const WhishlistPage = React.lazy(() => import('./pages/Whishlist'));
+const Checkout = React.lazy(() => import('./pages/Checkout'));
+const Profile = React.lazy(() => import('./pages/Profile'));
+const Search = React.lazy(() => import('./pages/Search'));
 
 function App() {
   return (
@@ -22,6 +25,15 @@ function App() {
         </Route>
         <Route path='/whishlist' exact>
           <WhishlistPage />
+        </Route>
+        <Route path='/checkout' exact>
+          <Checkout />
+        </Route>
+        <Route path='/search' exact>
+          <Search />
+        </Route>
+        <Route path='/profile' exact>
+          <Profile />
         </Route>
         <Route path='*'>
           <Redirect to='/' />

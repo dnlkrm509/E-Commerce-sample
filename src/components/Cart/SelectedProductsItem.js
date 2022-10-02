@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
-import trashSecondary from '../../assets/icons/trash-secondary.svg';
+import trashSecondary from '../../assets/icons/trash-secondary-red.svg';
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/cart-slice";
+import { uiActions } from "../../store/ui-slice";
 
 const SelectedProductsItem = (props) => {
     const dispatch = useDispatch();
@@ -32,9 +33,11 @@ const SelectedProductsItem = (props) => {
         dispatch(cartActions.removeOneFromCart(props.id));
     };
 
-    const removeFromCartHandler = () => {
-        dispatch(cartActions.removeFromCart(props.id));
-    };
+    const deleteWishlistModalHandler = () => {
+        dispatch(uiActions.showWishlistModal());
+        dispatch(uiActions.showDeleteWishlistModal());
+        props.onDeleteItem(props.id);
+    }
 
     console.table(cartItems)
 
@@ -60,7 +63,7 @@ const SelectedProductsItem = (props) => {
                                     </div>
                                 </div>
                                 <div className="flex items-center p-0 gap-[4px] order-1 grow-0">
-                                    <button onClick={removeFromCartHandler} className="relative left-[20.83%] right-[20.83%] top-[8.33%] bottom-[8.33%] text-[#ff5252]">
+                                    <button onClick={deleteWishlistModalHandler} className="relative left-[20.83%] right-[20.83%] top-[8.33%] bottom-[8.33%] text-[#ff5252]">
                                         <img src={trashSecondary} />
                                     </button>
                                 </div>
