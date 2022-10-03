@@ -33,7 +33,7 @@ const Cart = () => {
             {isVisible && <AddToCart onHideModal={hideModalHandler} selectedItem={selectedItem} deleteItem={deleteItem} />}
             <TopNav title='Cart' />
             <SelectedProducts onDeleteItem={deleteItemHandler} />
-            <YourWishlistList onSelected={selectedHandler} />
+            <YourWishlistList onSelected={selectedHandler} onDeleteItem={deleteItemHandler} />
             <TotalPrice />
             <BottomNav iconName='shopping-cart-primary' importType='shoppingCartPrimary' />
         </div>

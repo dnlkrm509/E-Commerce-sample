@@ -21,6 +21,7 @@ const YourWishlistList = (props) => {
                     rating={popularProductsSlice.rating}
                     price={popularProductsSlice.price}
                     onSelected={props.onSelected}
+                    onDeleteItem={props.onDeleteItem}
                 />
             ))}
             </ul>

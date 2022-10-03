@@ -21,7 +21,9 @@ const YourWishlistItem = (props) => {
     };
     
     const removeFromCartHandler = () => {
-        dispatch(cartActions.removeFromCart(props.id));
+        dispatch(uiActions.showWishlistModal());
+        dispatch(uiActions.showDeleteWishlistModal());
+        props.onDeleteItem(props.id);
     };
 
     return (
