@@ -1,12 +1,12 @@
 import React, { Suspense } from "react";
 import { Link } from "react-router-dom";
-import homeSecondary from '../../assets/icons/home-secondary.svg';
-import heartSecondary from '../../assets/icons/heart-secondary.svg';
-import shoppingCartSecondary from '../../assets/icons/shopping-cart-secondary.svg';
-import userSecondary from '../../assets/icons/user-secondary.svg';
+import homeSecondary from '../../../assets/icons/home-secondary.svg';
+import heartSecondary from '../../../assets/icons/heart-secondary.svg';
+import shoppingCartSecondary from '../../../assets/icons/shopping-cart-secondary.svg';
+import userSecondary from '../../../assets/icons/user-secondary.svg';
 
 function loadIcons(iconName) {
-    const primaryIcon = require(`../../assets/icons/${iconName}.svg`)
+    const primaryIcon = require(`../../../assets/icons/${iconName}.svg`)
     return primaryIcon;
 }
 

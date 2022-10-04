@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
-import BottomNav from "../Nav/BottomNav";
-import TopNav from '../Nav/TopNav';
+import BottomNav from "..//UI/Nav/BottomNav";
+import TopNav from '../UI/Nav/TopNav';
 import BuyProduct from "./BuyProduct";
 import MoreProductsList from "./MoreProductsList";
 import WishlistList from "./WishlistList";

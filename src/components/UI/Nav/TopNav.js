@@ -1,5 +1,5 @@
 import React from "react";
-import notifiedDotSecondary from '../../assets/icons/notified-dot-secondary.svg';
+import notifiedDotSecondary from '../../../assets/icons/notified-dot-secondary.svg';
 
 const Nav = (props) => {
 

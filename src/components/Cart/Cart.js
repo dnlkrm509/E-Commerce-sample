@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import BottomNav from "../../components/Nav/BottomNav";
-import TopNav from '../../components/Nav/TopNav';
+import BottomNav from "../../components/UI/Nav/BottomNav";
+import TopNav from '../../components/UI/Nav/TopNav';
 import { uiActions } from "../../store/ui-slice";
 import AddToCart from "./AddToCart";
 import SelectedProducts from "./SelectedProducts";
