@@ -2,6 +2,8 @@ import React from "react";
 import Header from "../UI/Header/Header";
 import AddressInformation from "./AddressInformation";
 import ProductList from "./ProductList";
+import Promo from "./Promo";
+import PurchaseSummary from "./PurchaseSummary";
 
 const Checkout = () => {
     return (
@@ -9,7 +11,8 @@ const Checkout = () => {
             <Header title='Shipment' backToPage='cart' />
             <AddressInformation />
             <ProductList />
-            <div>Purchase Summary</div>
+            <Promo />
+            <PurchaseSummary />
         </div>
     )
 };
