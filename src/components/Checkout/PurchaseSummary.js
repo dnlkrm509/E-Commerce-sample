@@ -26,6 +26,14 @@ const PurchaseSummary = () => {
                         RP {totalPrice.toFixed(3)}
                     </p>
                 </div>
+                <div className="flex justify-between items-start p-0 gap-[41px] w-[327px] h-[18px] order-1 self-stretch grow-0">
+                    <p className="font-[DMSans] not-italic font-normal text-[12px] leading-[18px] text-[#555555] order-0 grow-0">
+                        Shipping Charge
+                    </p>
+                    <p className="font-[DMSans] not-italic font-bold text-[12px] leading-[16px] text-[#555555] order-1 grow-0 text-right">
+                        RP 25.000
+                    </p>
+                </div>
             </div>
         </div>
     )

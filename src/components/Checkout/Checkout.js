@@ -4,6 +4,7 @@ import AddressInformation from "./AddressInformation";
 import ProductList from "./ProductList";
 import Promo from "./Promo";
 import PurchaseSummary from "./PurchaseSummary";
+import TotalPayment from "./TotalPayment";
 
 const Checkout = () => {
     return (
@@ -13,6 +14,7 @@ const Checkout = () => {
             <ProductList />
             <Promo />
             <PurchaseSummary />
+            <TotalPayment />
         </div>
     )
 };
