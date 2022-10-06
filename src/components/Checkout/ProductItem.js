@@ -7,17 +7,8 @@ import { uiActions } from "../../store/ui-slice";
 const ProductItem= (props) => {
     const dispatch = useDispatch();
 
-    const isVisibleHandler = () => {
-        dispatch(uiActions.showWishlistModal());
-        const selectedItem = {
-            title: props.title,
-            image: props.image,
-            brand: props.brand,
-            price: props.price,
-            rating: props.rating,
-            id: props.id
-        };
-        props.onSelected(selectedItem);
+    const chooseShippingModalHandler = () => {
+        dispatch(uiActions.showShippingModal());
     };
 
 
@@ -55,7 +46,9 @@ const ProductItem= (props) => {
                         </p>
                     </div>
                 </div>
-                <div className="flex flex-col items-start p-[12px_16px] gap-[10px] w-[311px] h-[44px] bg-[#fff] border-[0.5px] border-[#414040] rounded-[4px] order-2 self-stretch grow-0">
+                <button 
+                    onClick={chooseShippingModalHandler}
+                    className="flex flex-col items-start p-[12px_16px] gap-[10px] w-[311px] h-[44px] bg-[#fff] border-[0.5px] border-[#414040] rounded-[4px] order-2 self-stretch grow-0">
                     <div className="flex justify-between items-center p-0 gap-[10px] w-[279px] h-[20px] order-0 self-stretch grow-0">
                         <div className="flex items-center p-0 gap-[8px] w-[126px] h-[20px] order-0 grow-0">
                             <p className="text-[20px] text-[#9D44B5]"> 
@@ -69,7 +62,7 @@ const ProductItem= (props) => {
                             <FontAwesomeIcon icon={faChevronRight} />
                         </p>
                     </div>
-                </div>
+                </button>
             </div>
             <div className="flex justify-between items-start p-0 gap-[41px] w-[311px] h-[18px] order-1 self-stretch grow-0">
                 <p className="font-[DMSans] not-italic font-normal text-[14px] leading-[18px] text-[#555555] order-0 grow-0">
