@@ -6,6 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 
 const ChooseShipping = (props) => {
+    const [shippingCompany, setShippingCompany] = useState(localStorage.getItem('company'));
+    const [shippingService, setShippingService] = useState({
+        type: localStorage.getItem('type'),
+        duration: localStorage.getItem('duration'),
+        price: localStorage.getItem('price')
+    });
     const dispatch = useDispatch();
     const [shipping, setShipping] = useState('Company');
     const isShippingModal = useSelector(state => state.ui.isShippingModal);
@@ -20,10 +26,12 @@ const ChooseShipping = (props) => {
     
     const hideModalHandler = () => {
         dispatch(uiActions.hideWishlistModal());
+        console.log('Company: ', shippingCompany);
+        console.table('Service: ', shippingService);
     };
 
     return (
-        <Modal onHideModal={props.onHideModal}>
+        <Modal onHideModal={hideModalHandler}>
             {(isShippingModal) && (
                 <section className="w-full flex flex-col items-center justify-center p-[40px_24px_24px] gap-[40px] absolute left-0 bottom-0 bg-[#fff] rounded-[12px_12px_0_0]">
                 <div className="flex justify-between items-center p-0 order-0 self-stretch grow-0 mb-[40px]">
@@ -36,28 +44,40 @@ const ChooseShipping = (props) => {
                 </div>
                     {shipping === 'Company' && (
                     <div className="flex flex-col items-start p-0 gap-[12px] order-1 self-stretch grow-0">
-                        <div className="flex w-full items-start p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-0 self-stretch grow-0">
+                        <button 
+                            onClick={() => { setShippingCompany('JN Express'); localStorage.setItem('company', 'JN Express') }}
+                            className="flex w-full items-start p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-0 self-stretch grow-0">
                             <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-1">
                                 JN Express
                             </p>
-                        </div>
+                        </button>
                         <div className="flex items-start w-full p-0 gap-[10px] h-[1px] order-1 bg-[#cfcfcf] grow-0"></div>
-                        <div className="flex items-start p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-2 self-stretch grow-0">
+                        <button 
+                            onClick={() => { setShippingCompany('Fastest Express'); localStorage.setItem('company', 'Fastest Express') }}
+                            className="flex items-start p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-2 self-stretch grow-0">
                             <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-1">
                                 Fastest Express
                             </p>
-                        </div>
+                        </button>
                         <div className="flex items-start w-full p-0 gap-[10px] h-[1px] order-3 bg-[#cfcfcf] grow-0"></div>
-                        <div className="flex items-start p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-4 self-stretch grow-0">
+                        <button 
+                            onClick={() => { setShippingCompany('Flying Express'); localStorage.setItem('company', 'Flying Express') }} 
+                            className="flex items-start p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-4 self-stretch grow-0">
                             <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-1">
                                 Flying Express
                             </p>
-                        </div>
+                        </button>
                     </div>
                     )}
                     {shipping === 'Service' && (
                         <div className="flex flex-col items-start p-0 gap-[12px] order-1 self-stretch grow-0">
-                            <div className="flex items-center p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-0 self-stretch grow-0">
+                            <button 
+                                onClick={() => {
+                                    setShippingService({type: 'Same Day', duration: '1 Day', price: 56000});
+                                    localStorage.setItem('type', 'Same Day');
+                                    localStorage.setItem('duration', '1 Day');
+                                    localStorage.setItem('price', 56000) }}
+                                className="flex items-center p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-0 self-stretch grow-0">
                                 <div className="flex flex-col items-start p-0 gap-[4px] order-0 self-stretch grow-1">
                                     <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-0">
                                         Same Day
@@ -69,9 +89,15 @@ const ChooseShipping = (props) => {
                                 <p className="font-[Manrope] not-italic font-bold text-[14px] leading-[19px] text-right w-[170.5px] text-[#414040] order-1 grow-0">
                                     RP  56000
                                 </p>
-                            </div>
+                            </button>
                             <div className="flex items-start self-stretch p-0 gap-[10px] h-[1px] order-1 bg-[#cfcfcf] grow-0"></div>
-                            <div className="flex items-center p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-2 self-stretch grow-0">
+                            <button 
+                                onClick={() => {
+                                    setShippingService({type: 'Express', duration: '2-3 Day', price: 40000});
+                                    localStorage.setItem('type', 'Express');
+                                    localStorage.setItem('duration', '2-3 Day');
+                                    localStorage.setItem('price', 40000) }}
+                                className="flex items-center p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-2 self-stretch grow-0">
                                 <div className="flex flex-col items-start p-0 gap-[4px] order-0 self-stretch grow-1">
                                     <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-0">
                                         Express
@@ -83,9 +109,15 @@ const ChooseShipping = (props) => {
                                 <p className="font-[Manrope] not-italic font-bold text-[14px] leading-[19px] text-right w-[170.5px] text-[#414040] order-1 grow-0">
                                     RP  40000
                                 </p>
-                            </div>
+                            </button>
                             <div className="flex items-start self-stretch p-0 gap-[10px] h-[1px] order-3 bg-[#cfcfcf] grow-0"></div>
-                            <div className="flex items-center p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-4 self-stretch grow-0">
+                            <button 
+                                onClick={() => {
+                                    setShippingService({type: 'Regular', duration: '5-14 Day', price: 27000});
+                                    localStorage.setItem('type', 'Regular');
+                                    localStorage.setItem('duration', '5-14 Day');
+                                    localStorage.setItem('price', 27000) }}
+                                className="flex items-center p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-4 self-stretch grow-0">
                                 <div className="flex flex-col items-start p-0 gap-[4px] order-0 grow-1">
                                     <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-0">
                                         Regular
@@ -97,7 +129,7 @@ const ChooseShipping = (props) => {
                                 <p className="font-[Manrope] not-italic font-bold text-[14px] leading-[19px] text-right w-[170.5px] text-[#414040] order-1 grow-0">
                                     RP 27000
                                 </p>
-                            </div>
+                            </button>
                         </div>
                     )}
                     <div className="mt-[40px] flex items-center p-0 gap-[16px] self-stretch grow-0 order-4">
