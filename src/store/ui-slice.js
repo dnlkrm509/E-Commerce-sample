@@ -5,7 +5,8 @@ const initialState = {
     addedToCartConfirmation: false,
     deleteWishlistModal: false,
     deleteConfirmation: false,
-    isShippingModal: false
+    isShippingModal: false,
+    isDiscountComponent: false
 }
 
 const uiSlice = createSlice({
@@ -37,6 +38,12 @@ const uiSlice = createSlice({
         },
         showShippingModal(state, action) {
             state.isShippingModal = true;
+        },
+        showDiscountComponent(state, action) {
+            state.isDiscountComponent = true;
+        },
+        hideDiscountComponent(state, action) {
+            state.isDiscountComponent = false;
         }
     }
 })
