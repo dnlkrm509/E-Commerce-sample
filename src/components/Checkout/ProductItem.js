@@ -7,8 +7,26 @@ import { uiActions } from "../../store/ui-slice";
 const ProductItem= (props) => {
     const dispatch = useDispatch();
 
+    const type = (localStorage.getItem('type') && localStorage.getItem('duration')) ?
+    localStorage.getItem('type') : '';
+    const duration = (localStorage.getItem('type') && localStorage.getItem('duration')) ?
+    localStorage.getItem('duration') : '';
+    const price = (localStorage.getItem('type') && localStorage.getItem('duration')) ?
+    localStorage.getItem('price') : '';
+
+    const service = {
+        type: type,
+        duration: duration,
+        price: price
+    }
+
+    const company = localStorage.getItem('company') ?
+    localStorage.getItem('company') : '';
+
+
     const chooseShippingModalHandler = () => {
         dispatch(uiActions.showShippingModal());
+        props.onSelected(props.id);
     };
 
 
@@ -23,7 +41,7 @@ const ProductItem= (props) => {
                                 {props.title}
                             </div>
                             <span className="font-[DMSans] not-italic font-bold text-[12px] leading-[16px] text-[#9D44B5] order-1 grow-0">
-                                Remove
+                                {company} Remove
                             </span>
                         </div>
                         <div className="ml-[68px] h-[18px] font-[DMSans] not-italic font-normal text-[10px] leading-[13px] text-[#696969] order-0 grow-0">

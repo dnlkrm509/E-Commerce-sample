@@ -22,7 +22,7 @@ const ProductList = (props) => {
                     rating={popularProductsSlice.rating}
                     price={popularProductsSlice.price}
                     brand={popularProductsSlice.brand}
-                    onSelected={props.onSelected}
+                    onSelected={props.onSelectedItemId}
                 />
                 ))}
             </ul>

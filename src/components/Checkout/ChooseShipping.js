@@ -12,9 +12,11 @@ const ChooseShipping = (props) => {
         duration: localStorage.getItem('duration'),
         price: localStorage.getItem('price')
     });
+
     const dispatch = useDispatch();
     const [shipping, setShipping] = useState('Company');
     const isShippingModal = useSelector(state => state.ui.isShippingModal);
+
 
     const shippingCompanyHandler = () => {
         setShipping('Company');
@@ -45,7 +47,8 @@ const ChooseShipping = (props) => {
                     {shipping === 'Company' && (
                     <div className="flex flex-col items-start p-0 gap-[12px] order-1 self-stretch grow-0">
                         <button 
-                            onClick={() => { setShippingCompany('JN Express'); localStorage.setItem('company', 'JN Express') }}
+                            onClick={() => { setShippingCompany('JN Express');
+                            localStorage.setItem(`company_${props.selectedItemId}`, 'JN Express') }}
                             className="flex w-full items-start p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-0 self-stretch grow-0">
                             <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-1">
                                 JN Express
@@ -53,7 +56,8 @@ const ChooseShipping = (props) => {
                         </button>
                         <div className="flex items-start w-full p-0 gap-[10px] h-[1px] order-1 bg-[#cfcfcf] grow-0"></div>
                         <button 
-                            onClick={() => { setShippingCompany('Fastest Express'); localStorage.setItem('company', 'Fastest Express') }}
+                            onClick={() => { setShippingCompany('Fastest Express');
+                            localStorage.setItem(`company_${props.selectedItemId}`, 'Fastest Express') }}
                             className="flex items-start p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-2 self-stretch grow-0">
                             <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-1">
                                 Fastest Express
@@ -61,7 +65,8 @@ const ChooseShipping = (props) => {
                         </button>
                         <div className="flex items-start w-full p-0 gap-[10px] h-[1px] order-3 bg-[#cfcfcf] grow-0"></div>
                         <button 
-                            onClick={() => { setShippingCompany('Flying Express'); localStorage.setItem('company', 'Flying Express') }} 
+                            onClick={() => { setShippingCompany('Flying Express');
+                            localStorage.setItem(`company_${props.selectedItemId}`, 'Flying Express') }} 
                             className="flex items-start p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-4 self-stretch grow-0">
                             <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-1">
                                 Flying Express
@@ -74,9 +79,9 @@ const ChooseShipping = (props) => {
                             <button 
                                 onClick={() => {
                                     setShippingService({type: 'Same Day', duration: '1 Day', price: 56000});
-                                    localStorage.setItem('type', 'Same Day');
-                                    localStorage.setItem('duration', '1 Day');
-                                    localStorage.setItem('price', 56000) }}
+                                    localStorage.setItem(`type_${props.selectedItemId}`, 'Same Day');
+                                    localStorage.setItem(`duration_${props.selectedItemId}`, '1 Day');
+                                    localStorage.setItem(`price_${props.selectedItemId}`, 56000) }}
                                 className="flex items-center p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-0 self-stretch grow-0">
                                 <div className="flex flex-col items-start p-0 gap-[4px] order-0 self-stretch grow-1">
                                     <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-0">
@@ -94,9 +99,9 @@ const ChooseShipping = (props) => {
                             <button 
                                 onClick={() => {
                                     setShippingService({type: 'Express', duration: '2-3 Day', price: 40000});
-                                    localStorage.setItem('type', 'Express');
-                                    localStorage.setItem('duration', '2-3 Day');
-                                    localStorage.setItem('price', 40000) }}
+                                    localStorage.setItem(`type_${props.selectedItemId}`, 'Express');
+                                    localStorage.setItem(`duration_${props.selectedItemId}`, '2-3 Day');
+                                    localStorage.setItem(`price_${props.selectedItemId}`, 40000) }}
                                 className="flex items-center p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-2 self-stretch grow-0">
                                 <div className="flex flex-col items-start p-0 gap-[4px] order-0 self-stretch grow-1">
                                     <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-0">
@@ -114,9 +119,9 @@ const ChooseShipping = (props) => {
                             <button 
                                 onClick={() => {
                                     setShippingService({type: 'Regular', duration: '5-14 Day', price: 27000});
-                                    localStorage.setItem('type', 'Regular');
-                                    localStorage.setItem('duration', '5-14 Day');
-                                    localStorage.setItem('price', 27000) }}
+                                    localStorage.setItem(`type_${props.selectedItemId}`, 'Regular');
+                                    localStorage.setItem(`duration_${props.selectedItemId}`, '5-14 Day');
+                                    localStorage.setItem(`price_${props.selectedItemId}`, 27000) }}
                                 className="flex items-center p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-4 self-stretch grow-0">
                                 <div className="flex flex-col items-start p-0 gap-[4px] order-0 grow-1">
                                     <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-0">
