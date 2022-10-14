@@ -1,3 +1,7 @@
+# Purpose of creation of this app
+
+To search and view beauty products, add item to basket, remove item from cart or continuing to checkout, choosing the shipment and voucher, payment method
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
