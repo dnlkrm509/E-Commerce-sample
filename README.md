@@ -1,6 +1,5 @@
 # Purpose of creation of this app
-
-To search and view beauty products, add item to basket, remove item from cart or continuing to checkout, choosing the shipment and voucher, payment method
+Open source e-commerce template.
 
 # Getting Started with Create React App
 
