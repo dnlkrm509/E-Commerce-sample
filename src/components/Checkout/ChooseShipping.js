@@ -5,6 +5,8 @@ import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 
+let initial = true;
+
 const ChooseShipping = (props) => {
     const [shippingCompany, setShippingCompany] = useState(localStorage.getItem('company'));
     const [shippingService, setShippingService] = useState({
@@ -16,7 +18,9 @@ const ChooseShipping = (props) => {
     const dispatch = useDispatch();
     const [shipping, setShipping] = useState('Company');
     const isShippingModal = useSelector(state => state.ui.isShippingModal);
+    const itemCount = useSelector(state => state.ui.itemCount);
 
+    let existingItemShipment = false;
 
     const shippingCompanyHandler = () => {
         setShipping('Company');
@@ -27,6 +31,7 @@ const ChooseShipping = (props) => {
     };
     
     const hideModalHandler = () => {
+        initial = true;
         dispatch(uiActions.hideWishlistModal());
         console.log('Company: ', shippingCompany);
         console.table('Service: ', shippingService);
@@ -48,7 +53,22 @@ const ChooseShipping = (props) => {
                     <div className="flex flex-col items-start p-0 gap-[12px] order-1 self-stretch grow-0">
                         <button 
                             onClick={() => { setShippingCompany('JN Express');
-                            localStorage.setItem(`company_${props.selectedItemId}`, 'JN Express') }}
+                            
+                            try {
+                                if (localStorage.getItem(`company_${props.selectedItemId}`)) {
+                                    existingItemShipment = true;
+                                }
+                            } catch(err) { existingItemShipment = false; }
+
+                            if (initial && !existingItemShipment) { 
+                                dispatch(uiActions.incrementItemCount()); 
+                                initial = false; 
+                                localStorage.setItem('itemCount', itemCount);
+                            }
+
+                            localStorage.setItem(`company_${props.selectedItemId}`, 'JN Express');
+                            
+                        }}
                             className="flex w-full items-start p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-0 self-stretch grow-0">
                             <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-1">
                                 JN Express

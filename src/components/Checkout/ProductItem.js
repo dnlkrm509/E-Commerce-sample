@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 
 const ProductItem= (props) => {
@@ -18,10 +18,21 @@ const ProductItem= (props) => {
         type: type,
         duration: duration,
         price: price
-    }
+    };
 
     const company = localStorage.getItem(`company_${props.id}`) ?
     localStorage.getItem(`company_${props.id}`) : '';
+
+    const itemCount = useSelector(state => state.ui.itemCount);
+    console.log(itemCount)
+
+    try {
+        if (service.type && company && itemCount === props.itemsCount) {
+            dispatch(uiActions.enablePaymentMethodButton());
+        }    
+    } catch (err) {
+        dispatch(uiActions.disablePaymentMethodButton());
+    }
 
 
     const chooseShippingModalHandler = () => {

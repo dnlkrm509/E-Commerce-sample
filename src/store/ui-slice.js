@@ -7,7 +7,9 @@ const initialState = {
     deleteConfirmation: false,
     isShippingModal: false,
     isDiscountComponent: false,
-    isDiscountModal: false
+    isDiscountModal: false,
+    isDisabledPaymentMethodButton: true,
+    itemCount: 0
 }
 
 const uiSlice = createSlice({
@@ -49,6 +51,18 @@ const uiSlice = createSlice({
         },
         showDiscountModal(state, action) {
             state.isDiscountModal = true;
+        },
+        disablePaymentMethodButton(state, action) {
+            state.isDisabledPaymentMethodButton = true;
+        },
+        enablePaymentMethodButton(state, action) {
+            state.isDisabledPaymentMethodButton = false;
+        },
+        incrementItemCount(state, action) {
+            state.itemCount++;
+        },
+        resetItemCount(state, action) {
+            state.itemCount = 0;
         }
     }
 })

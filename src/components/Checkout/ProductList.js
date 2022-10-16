@@ -23,6 +23,7 @@ const ProductList = (props) => {
                     price={popularProductsSlice.price}
                     brand={popularProductsSlice.brand}
                     onSelected={props.onSelectedItemId}
+                    itemsCount={popularProductsSlices.length}
                 />
                 ))}
             </ul>
