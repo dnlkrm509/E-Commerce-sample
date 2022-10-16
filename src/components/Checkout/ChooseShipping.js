@@ -53,21 +53,23 @@ const ChooseShipping = (props) => {
                     <div className="flex flex-col items-start p-0 gap-[12px] order-1 self-stretch grow-0">
                         <button 
                             onClick={() => { setShippingCompany('JN Express');
-                            
+                            localStorage.setItem(`company_${props.selectedItemId}`, 'JN Express');
                             try {
-                                if (localStorage.getItem(`company_${props.selectedItemId}`)) {
+                                if (
+                                    localStorage.getItem(`company_${props.selectedItemId}`) &&
+                                    localStorage.getItem(`type_${props.selectedItemId}`)
+                                ) {
                                     existingItemShipment = true;
                                 }
-                            } catch(err) { existingItemShipment = false; }
-
-                            if (initial && !existingItemShipment) { 
-                                dispatch(uiActions.incrementItemCount()); 
-                                initial = false; 
-                                localStorage.setItem('itemCount', itemCount);
+                            } catch(err) {
+                                existingItemShipment = false;
                             }
 
-                            localStorage.setItem(`company_${props.selectedItemId}`, 'JN Express');
-                            
+                            if (initial && existingItemShipment && !localStorage.getItem(`itemCounted_${props.selectedItemId}`)) { 
+                                dispatch(uiActions.incrementItemCount()); 
+                                initial = false;
+                                localStorage.setItem(`itemCounted_${props.selectedItemId}`, true)
+                            }
                         }}
                             className="flex w-full items-start p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-0 self-stretch grow-0">
                             <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-1">
@@ -77,7 +79,22 @@ const ChooseShipping = (props) => {
                         <div className="flex items-start w-full p-0 gap-[10px] h-[1px] order-1 bg-[#cfcfcf] grow-0"></div>
                         <button 
                             onClick={() => { setShippingCompany('Fastest Express');
-                            localStorage.setItem(`company_${props.selectedItemId}`, 'Fastest Express') }}
+                            localStorage.setItem(`company_${props.selectedItemId}`, 'Fastest Express')
+                            try {
+                                if (
+                                    localStorage.getItem(`company_${props.selectedItemId}`) &&
+                                    localStorage.getItem(`type_${props.selectedItemId}`)
+                                ) {
+                                    existingItemShipment = true;
+                                }
+                            } catch(err) { existingItemShipment = false; }
+
+                            if (initial && existingItemShipment && !localStorage.getItem(`itemCounted_${props.selectedItemId}`)) { 
+                                dispatch(uiActions.incrementItemCount()); 
+                                initial = false;
+                                localStorage.setItem(`itemCounted_${props.selectedItemId}`, true)
+                            } 
+                        }}
                             className="flex items-start p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-2 self-stretch grow-0">
                             <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-1">
                                 Fastest Express
@@ -86,7 +103,22 @@ const ChooseShipping = (props) => {
                         <div className="flex items-start w-full p-0 gap-[10px] h-[1px] order-3 bg-[#cfcfcf] grow-0"></div>
                         <button 
                             onClick={() => { setShippingCompany('Flying Express');
-                            localStorage.setItem(`company_${props.selectedItemId}`, 'Flying Express') }} 
+                            localStorage.setItem(`company_${props.selectedItemId}`, 'Flying Express')
+                            try {
+                                if (
+                                    localStorage.getItem(`company_${props.selectedItemId}`) &&
+                                    localStorage.getItem(`type_${props.selectedItemId}`)
+                                ) {
+                                    existingItemShipment = true;
+                                }
+                            } catch(err) { existingItemShipment = false; }
+
+                            if (initial && existingItemShipment && !localStorage.getItem(`itemCounted_${props.selectedItemId}`)) { 
+                                dispatch(uiActions.incrementItemCount()); 
+                                initial = false;
+                                localStorage.setItem(`itemCounted_${props.selectedItemId}`, true)
+                            } 
+                        }} 
                             className="flex items-start p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-4 self-stretch grow-0">
                             <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-1">
                                 Flying Express
@@ -101,7 +133,22 @@ const ChooseShipping = (props) => {
                                     setShippingService({type: 'Same Day', duration: '1 Day', price: 56000});
                                     localStorage.setItem(`type_${props.selectedItemId}`, 'Same Day');
                                     localStorage.setItem(`duration_${props.selectedItemId}`, '1 Day');
-                                    localStorage.setItem(`price_${props.selectedItemId}`, 56000) }}
+                                    localStorage.setItem(`price_${props.selectedItemId}`, 56000)
+                                    try {
+                                        if (
+                                            localStorage.getItem(`company_${props.selectedItemId}`) &&
+                                            localStorage.getItem(`type_${props.selectedItemId}`)
+                                        ) {
+                                            existingItemShipment = true;
+                                        }
+                                    } catch(err) { existingItemShipment = false; }
+        
+                                    if (initial && existingItemShipment && !localStorage.getItem(`itemCounted_${props.selectedItemId}`)) { 
+                                        dispatch(uiActions.incrementItemCount()); 
+                                        initial = false;
+                                        localStorage.setItem(`itemCounted_${props.selectedItemId}`, true)
+                                    } 
+                                }}
                                 className="flex items-center p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-0 self-stretch grow-0">
                                 <div className="flex flex-col items-start p-0 gap-[4px] order-0 self-stretch grow-1">
                                     <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-0">
@@ -121,7 +168,22 @@ const ChooseShipping = (props) => {
                                     setShippingService({type: 'Express', duration: '2-3 Day', price: 40000});
                                     localStorage.setItem(`type_${props.selectedItemId}`, 'Express');
                                     localStorage.setItem(`duration_${props.selectedItemId}`, '2-3 Day');
-                                    localStorage.setItem(`price_${props.selectedItemId}`, 40000) }}
+                                    localStorage.setItem(`price_${props.selectedItemId}`, 40000)
+                                    try {
+                                        if (
+                                            localStorage.getItem(`company_${props.selectedItemId}`) &&
+                                            localStorage.getItem(`type_${props.selectedItemId}`)
+                                        ) {
+                                            existingItemShipment = true;
+                                        }
+                                    } catch(err) { existingItemShipment = false; }
+        
+                                    if (initial && existingItemShipment && !localStorage.getItem(`itemCounted_${props.selectedItemId}`)) { 
+                                        dispatch(uiActions.incrementItemCount()); 
+                                        initial = false;
+                                        localStorage.setItem(`itemCounted_${props.selectedItemId}`, true)
+                                    } 
+                                }}
                                 className="flex items-center p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-2 self-stretch grow-0">
                                 <div className="flex flex-col items-start p-0 gap-[4px] order-0 self-stretch grow-1">
                                     <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-0">
@@ -141,7 +203,22 @@ const ChooseShipping = (props) => {
                                     setShippingService({type: 'Regular', duration: '5-14 Day', price: 27000});
                                     localStorage.setItem(`type_${props.selectedItemId}`, 'Regular');
                                     localStorage.setItem(`duration_${props.selectedItemId}`, '5-14 Day');
-                                    localStorage.setItem(`price_${props.selectedItemId}`, 27000) }}
+                                    localStorage.setItem(`price_${props.selectedItemId}`, 27000)
+                                    try {
+                                        if (
+                                            localStorage.getItem(`company_${props.selectedItemId}`) &&
+                                            localStorage.getItem(`type_${props.selectedItemId}`)
+                                        ) {
+                                            existingItemShipment = true;
+                                        }
+                                    } catch(err) { existingItemShipment = false; }
+        
+                                    if (initial && existingItemShipment && !localStorage.getItem(`itemCounted_${props.selectedItemId}`)) { 
+                                        dispatch(uiActions.incrementItemCount()); 
+                                        initial = false;
+                                        localStorage.setItem(`itemCounted_${props.selectedItemId}`, true)
+                                    } 
+                                }}
                                 className="flex items-center p-[10px_12px] gap-[10px] bg-[#fff] rounded-[4px] order-4 self-stretch grow-0">
                                 <div className="flex flex-col items-start p-0 gap-[4px] order-0 grow-1">
                                     <p className="font-[Manrope] not-italic font-medium text-[14px] leading-[19px] text-[#414040] order-0 grow-0">
