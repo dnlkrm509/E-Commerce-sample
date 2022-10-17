@@ -1,8 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { uiActions } from "../../store/ui-slice";
 
 const TotalPayment = () => {
     const isDisabledPaymentMethodButton = useSelector(state => state.ui.isDisabledPaymentMethodButton);
+    const dispatch = useDispatch();
+
+    const showPaymentMethodHandler = () => {
+        dispatch(uiActions.showPaymentMethodComponent());
+    };
 
     return (
         <div className="mt-[36px] flex flex-col items-start p-0 gap-[10px] absolute left-0 bg-[#fff] w-full shadow-[0_-5px_25px_-15px_rgba(85,85,85,0.25)]">
@@ -14,6 +20,7 @@ const TotalPayment = () => {
                     </p>
                 </div>
                 <button 
+                    onClick={showPaymentMethodHandler}
                     disabled={isDisabledPaymentMethodButton}
                     className="disabled:bg-[#a7a7a7] bg-[#9D44B5] disabled:cursor-not-allowed rounded-[4px] p-[11px_78px] self-stretch order-1 grow-0">
                     <span className="font-[Manrope] not-italic font-bold text-[14px] leading-[19px] text-center text-[#fff]">

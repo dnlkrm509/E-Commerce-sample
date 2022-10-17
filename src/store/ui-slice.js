@@ -9,7 +9,8 @@ const initialState = {
     isDiscountComponent: false,
     isDiscountModal: false,
     isDisabledPaymentMethodButton: true,
-    itemCount: 0
+    itemCount: 0,
+    isPaymentMethodComponent: false
 }
 
 const uiSlice = createSlice({
@@ -63,6 +64,12 @@ const uiSlice = createSlice({
         },
         resetItemCount(state, action) {
             state.itemCount = 0;
+        },
+        showPaymentMethodComponent(state, action) {
+            state.isPaymentMethodComponent = true;
+        },
+        hidePaymentMethodComponent(state, action) {
+            state.isPaymentMethodComponent = false;
         }
     }
 })

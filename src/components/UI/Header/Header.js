@@ -9,11 +9,15 @@ const Header = (props) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const isDiscountComponent = useSelector(state => state.ui.isDiscountComponent);
+    const isPaymentMethodComponent = useSelector(state => state.ui.isPaymentMethodComponent);
 
     const backToCartHandler = () => {
         history.push(`/${props.backToPage}`);
         if (isDiscountComponent) {
             dispatch(uiActions.hideDiscountComponent());
+        }
+        if (isPaymentMethodComponent) {
+            dispatch(uiActions.hidePaymentMethodComponent());
         }
     };
 
