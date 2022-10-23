@@ -1,5 +1,7 @@
 import React from "react";
 import Header from "../UI/Header/Header";
+import BankTransfer from "./BankTransfer";
+import DigitalWallet from "./DigitalWallet";
 import InstantPayment from "./InstantPayment";
 import VirtualAccount from "./VirtualAccount";
 
@@ -10,6 +12,8 @@ const PaymentMethod = () => {
             <div className="mt-[32px] flex flex-col items-start p-0 gap-[40px]">
                 <InstantPayment />
                 <VirtualAccount />
+                <BankTransfer />
+                <DigitalWallet />
             </div>
         </div>
     )
