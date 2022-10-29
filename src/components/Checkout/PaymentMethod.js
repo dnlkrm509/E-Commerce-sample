@@ -3,6 +3,7 @@ import Header from "../UI/Header/Header";
 import BankTransfer from "./BankTransfer";
 import DigitalWallet from "./DigitalWallet";
 import InstantPayment from "./InstantPayment";
+import PayButton from "./PayButton";
 import VirtualAccount from "./VirtualAccount";
 
 const PaymentMethod = () => {
@@ -14,6 +15,7 @@ const PaymentMethod = () => {
                 <VirtualAccount />
                 <BankTransfer />
                 <DigitalWallet />
+                <PayButton />
             </div>
         </div>
     )
